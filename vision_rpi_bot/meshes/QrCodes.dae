@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 3.0.1</authoring_tool>
+    </contributor>
+    <created>2025-09-15T15:19:07</created>
+    <modified>2025-09-15T15:19:07</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="left_turn-effect">
+      <profile_COMMON>
+        <newparam sid="Image-surface">
+          <surface type="2D">
+            <init_from>Image</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="Image-sampler">
+          <sampler2D>
+            <source>Image-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="Image-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="right_turn-effect">
+      <profile_COMMON>
+        <newparam sid="right_png-surface">
+          <surface type="2D">
+            <init_from>right_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="right_png-sampler">
+          <sampler2D>
+            <source>right_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="right_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+    <effect id="stop-effect">
+      <profile_COMMON>
+        <newparam sid="stop_png-surface">
+          <surface type="2D">
+            <init_from>stop_png</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="stop_png-sampler">
+          <sampler2D>
+            <source>stop_png-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="stop_png-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="Image" name="Image">
+      <init_from>Image.png</init_from>
+    </image>
+    <image id="right_png" name="right_png">
+      <init_from>right.png</init_from>
+    </image>
+    <image id="stop_png" name="stop_png">
+      <init_from>stop.png</init_from>
+    </image>
+  </library_images>
+  <library_materials>
+    <material id="left_turn-material" name="left_turn">
+      <instance_effect url="#left_turn-effect"/>
+    </material>
+    <material id="right_turn-material" name="right_turn">
+      <instance_effect url="#right_turn-effect"/>
+    </material>
+    <material id="stop-material" name="stop">
+      <instance_effect url="#stop-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="Cube_017-mesh" name="Cube.017">
+      <mesh>
+        <source id="Cube_017-mesh-positions">
+          <float_array id="Cube_017-mesh-positions-array" count="72">-1 -1 -1 -1 -1 1 -1 1 -1 -1 1 1 1 -1 -1 1 -1 1 1 1 -1 1 1 1 88.14226 -0.9988188 1.042983 88.14226 -0.9988188 -0.9333332 60.16723 -0.9988186 1.042983 60.16723 -0.9988186 -0.9333332 88.14226 -0.8610205 1.042983 88.14226 -0.8610205 -0.9333332 60.16723 -0.8610203 1.042983 60.16723 -0.8610203 -0.9333332 57.49986 5.392857 -1 57.49986 5.392857 1 57.49986 7.392857 -1 57.49986 7.392857 1 59.49986 5.392857 -1 59.49986 5.392857 1 59.49986 7.392857 -1 59.49986 7.392857 1</float_array>
+          <technique_common>
+            <accessor source="#Cube_017-mesh-positions-array" count="24" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_017-mesh-normals">
+          <float_array id="Cube_017-mesh-normals-array" count="36">-1 0 0 0 1 0 1 0 0 0 -1 0 0 0 -1 0 0 1 0 0 -1 0 1 0 0 0 1 0 -1 0 0 1 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#Cube_017-mesh-normals-array" count="12" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="Cube_017-mesh-map-0">
+          <float_array id="Cube_017-mesh-map-0-array" count="216">0.2244904 0.07142877 0.1530617 0 0.2244905 0 0.2244904 0.1428575 0.1530617 0.07142877 0.2244905 0.07142877 0.995967 0.9943161 0.00158441 0.002827703 0.9945203 0.001380145 0.2244904 0.285715 0.1530617 0.2142862 0.2244905 0.2142862 0.2959193 0 0.2244905 0.07142871 0.2244905 0 0.2959193 0.07142877 0.2244905 0.1428574 0.2244905 0.07142877 0.625 0 0.375 0.25 0.375 0 0.625 0.25 0.375 0.5 0.375 0.25 1.004549 0.9999065 -0.004548907 0.00342679 0.9982399 -0.002882242 0.625 0.75 0.375 1 0.375 0.75 0.375 0.5 0.125 0.75 0.125 0.5 0.875 0.5 0.625 0.75 0.625 0.5 0.2959194 0.2142861 0.2244906 0.1428574 0.2959194 0.1428574 0.2959213 0.2857149 0.2244911 0.2142862 0.2959213 0.2142862 0.9964802 0.9964802 -0.003146886 -0.003146886 0.9964802 -0.003146767 0.5 1 0 0.5000001 0.5 0.5000001 0.3673477 0 0.2959175 0.07142877 0.2959175 0 1 0 0.5 0.5 0.5 0 0.2244904 0.07142877 0.1530617 0.07142871 0.1530617 0 0.2244904 0.1428575 0.1530617 0.1428574 0.1530617 0.07142877 0.995967 0.9943161 0.003031969 0.9957628 0.00158441 0.002827703 0.2244904 0.285715 0.1530617 0.2857149 0.1530617 0.2142862 0.2959193 0 0.2959192 0.07142877 0.2244905 0.07142871 0.2959193 0.07142877 0.2959192 0.1428575 0.2244905 0.1428574 0.625 0 0.625 0.25 0.375 0.25 0.625 0.25 0.625 0.5 0.375 0.5 1.004549 0.9999065 0.001760125 1.006216 -0.004548907 0.00342679 0.625 0.75 0.625 1 0.375 1 0.375 0.5 0.375 0.75 0.125 0.75 0.875 0.5 0.875 0.75 0.625 0.75 0.2959194 0.2142861 0.2244906 0.2142861 0.2244906 0.1428574 0.2959213 0.2857149 0.2244911 0.2857149 0.2244911 0.2142862 0.9964802 0.9964802 -0.003146886 0.9964801 -0.003146886 -0.003146886 0.5 1 0 1 0 0.5000001 0.3673477 0 0.3673477 0.07142877 0.2959175 0.07142877 1 0 1 0.5 0.5 0.5</float_array>
+          <technique_common>
+            <accessor source="#Cube_017-mesh-map-0-array" count="108" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="Cube_017-mesh-vertices">
+          <input semantic="POSITION" source="#Cube_017-mesh-positions"/>
+        </vertices>
+        <triangles material="left_turn-material" count="34">
+          <input semantic="VERTEX" source="#Cube_017-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_017-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_017-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 3 1 3 6 1 4 2 1 5 5 3 9 0 3 10 4 3 11 6 4 12 0 4 13 2 4 14 3 5 15 5 5 16 7 5 17 9 6 18 15 6 19 13 6 20 12 2 21 9 2 22 13 2 23 14 7 24 13 7 25 15 7 26 10 0 27 15 0 28 11 0 29 12 8 30 10 8 31 8 8 32 8 9 33 11 9 34 9 9 35 17 0 36 18 0 37 16 0 38 19 1 39 22 1 40 18 1 41 23 2 42 20 2 43 22 2 44 21 3 45 16 3 46 20 3 47 22 4 48 16 4 49 18 4 50 19 5 51 21 5 52 23 5 53 1 0 54 3 0 55 2 0 56 3 1 57 7 1 58 6 1 59 5 3 63 1 3 64 0 3 65 6 4 66 4 4 67 0 4 68 3 5 69 1 5 70 5 5 71 9 4 72 11 4 73 15 4 74 12 2 75 8 2 76 9 2 77 14 10 78 12 10 79 13 10 80 10 0 81 14 0 82 15 0 83 12 5 84 14 5 85 10 5 86 8 11 87 10 11 88 11 11 89 17 0 90 19 0 91 18 0 92 19 1 93 23 1 94 22 1 95 23 2 96 21 2 97 20 2 98 21 3 99 17 3 100 16 3 101 22 4 102 20 4 103 16 4 104 19 5 105 17 5 106 21 5 107</p>
+        </triangles>
+        <triangles material="stop-material" count="2">
+          <input semantic="VERTEX" source="#Cube_017-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#Cube_017-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#Cube_017-mesh-map-0" offset="2" set="0"/>
+          <p>7 2 6 4 2 7 6 2 8 7 2 60 5 2 61 4 2 62</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="qrcode" name="qrcode" type="NODE">
+        <matrix sid="transform">-8.7423e-10 -0.28 0 1.77 0.02000005 -1.22392e-8 0 -4.76 0 0 0.3 0.28 0 0 0 1</matrix>
+        <instance_geometry url="#Cube_017-mesh" name="qrcode">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="left_turn-material" target="#left_turn-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="right_turn-material" target="#right_turn-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+              <instance_material symbol="stop-material" target="#stop-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>
