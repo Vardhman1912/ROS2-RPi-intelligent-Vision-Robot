@@ -14,16 +14,21 @@ class camera_sub(Node):
         self.error_msg = Int16()
 
         self.bridge=CvBridge()
-
+        self.get_logger().info("Line Following Node has been started")
 
 
     def camera_cb(self, data):
+        
         frame = self.bridge.imgmsg_to_cv2(data,'mono8')
         frame=cv2.resize(frame, (640,480), interpolation = cv2.INTER_AREA)
-        roi = frame[307:477,185:595] # First is Y and sencond is X
-        # blurred_frame = cv2.GaussianBlur(roi, (7,7), 2)
+        roi = frame[307:477,185:595] # First is Y and sencond is 
+        # # blurred_frame = cv2.GaussianBlur(roi, (7,7), 2)
         edged = cv2.Canny(roi, 90,120)
-
+        
+        
+        # Check if Canny detected any edges
+        edge_pixels = cv2.countNonZero(edged)
+        
         white_index=[]
         mid_point_line = 0
         for index,values in enumerate(edged[:][139]): # This is in Y Axis
@@ -41,12 +46,20 @@ class camera_sub(Node):
         cv2.circle(img=edged, center = (mid_point_robot[0],mid_point_robot[1]), radius = 5 , color = (255,0,0), thickness=4)
         self.error_msg.data = int(mid_point_robot[0] - mid_point_line)
         self.error_value_publisher.publish(self.error_msg)
+        # print("Error Value Published: ",self.error_msg.data)
 
 
 
+        # Display the original frame
         cv2.imshow('Frame',frame)
+        
+        # Display the Canny output
         cv2.imshow('Canny Output',edged)
-        cv2.waitKey(1)
+
+        key = cv2.waitKey(1)
+        if key == ord('q'):
+            self.get_logger().info("Quit key pressed")
+            rclpy.shutdown()
 
 
 def main(args=None):
@@ -56,7 +69,7 @@ def main(args=None):
 
     rclpy.spin(sensor_sub)
     sensor_sub.destroy_node()
-    rclpy.shutdown()
+    rclpy.shutdown() 
 
 
 if __name__ == '__main__':
