@@ -13,7 +13,8 @@ class camera_sub(Node):
         self.cmd_vel_pub = self.create_publisher(Twist, '/cmd_vel', 10)
         self.vel_msg=Twist()
         self.bridge=CvBridge()
-
+        self.get_logger().info("Line Following Sim node has been started")
+       
 
 
     def camera_cb(self, data):
