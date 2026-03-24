@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image
@@ -21,8 +22,7 @@ class camera_sub(Node):
         
         frame = self.bridge.imgmsg_to_cv2(data,'mono8')
         frame=cv2.resize(frame, (640,480), interpolation = cv2.INTER_AREA)
-        roi = frame[307:477,185:595] # First is Y and sencond is 
-        # # blurred_frame = cv2.GaussianBlur(roi, (7,7), 2)
+        roi = frame[307:477,185:595] # First is Y and sencond is X
         edged = cv2.Canny(roi, 90,120)
         
         
