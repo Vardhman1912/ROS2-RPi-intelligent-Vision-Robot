@@ -18,10 +18,11 @@ class camera_sub(Node):
         self.package_share_dir = get_package_share_directory("vision_rpi_bot")
         self.model_file = os.path.join(self.package_share_dir, "data","lite-model_ssd_mobilenet_v1_100_320_uint8_nms_1.tflite")
         self.label_file = os.path.join(self.package_share_dir, "data","labels.txt")
+        self.get_logger().info('Surveillance Node has been started')
 
     def camera_cb(self, data):
-        frame = self.bridge.imgmsg_to_cv2(data,'mono8')
-        frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
+        frame = self.bridge.imgmsg_to_cv2(data,'bgr8')
+        #frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
         input_image = frame
         input_image = cv2.resize(input_image,(320,320))
         input_image = input_image.reshape(1 , input_image.shape[0],input_image.shape[1],input_image.shape[2])
